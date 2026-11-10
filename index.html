@@ -1,1 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EspelhoBarato - Espelhos Orgânicos, LED e para Banheiro</title>
+<meta name="description" content="Espelhos orgânicos, espelhos LED, espelhos para banheiro com até 40% OFF. Entrega para todo o Brasil.">
 
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+  body { background: #f5f5f5; color: #333; }
+
+  /* ===== TOPBAR ===== */
+  .topbar {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .topbar .info { display: flex; gap: 20px; flex-wrap: wrap; }
+  .topbar a { color: #fff; text-decoration: none; }
+  .topbar a:hover { color: #f5a623; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+  .logo span { color: #f5a623; }
+  .search-bar {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  .search-bar input {
+    flex: 1;
+    padding: 10px 18px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+  .search-bar button {
+    background: #f5a623;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .header-icons { display: flex; gap: 20px; align-items: center; }
+  .header-icons .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: #333;
+  }
+  .header-icons .icon span:first-child { font-size: 20px; }
+
+  /* ===== NAV ===== */
+  nav {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  .nav-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+    padding: 12px 30px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .nav-content a {
+    color: #fff;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-content a:hover { color: #f5a623; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+    color: #fff;
+    padding: 60px 30px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 42px; margin-bottom: 15px; }
+  .hero h1 span { color: #f5a623; }
+  .hero p { font-size: 18px; opacity: 0.9; margin-bottom: 25px; }
+  .hero .btn {
+    display: inline-block;
+    background: #f5a623;
+    color: #fff;
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform .2s;
+  }
+  .hero .btn:hover { transform: scale(1.05); }
+
+  /* ===== BENEFÍCIOS ===== */
+  .benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: -30px auto 40px;
+    padding: 0 30px;
+    position: relative;
+    z-index: 5;
+  }
+  .benefit-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  .benefit-card h3 { font-size: 15px; margin-bottom: 5px; color: #1a1a1a; }
+  .benefit-card p { font-size: 13px; color: #777; }
+  .benefit-card .emoji { font-size: 28px; margin-bottom: 8px; }
+
+  /* ===== SEÇÕES ===== */
+  section { padding: 40px 30px; }
+  .section-title {
+    max-width: 1300px;
+    margin: 0 auto 25px;
+    font-size: 24px;
+    color: #1a1a1a;
+    border-left: 5px solid #f5a623;
+    padding-left: 12px;
+  }
+
+  /* ===== CATEGORIAS ===== */
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .cat-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+  .cat-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+  }
+  .cat-card h3 { padding: 12px; font-size: 15px; }
+
+  /* ===== PRODUTOS ===== */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #e63946;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .product-info { padding: 15px; flex: 1; display: flex; flex-direction: column; }
+  .product-info h3 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    min-height: 40px;
+  }
+  .old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 13px;
+  }
+  .price {
+    color: #1a1a1a;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 4px 0;
+  }
+  .pix-price {
+    color: #2a9d8f;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .installments {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+  }
+  .btn-buy {
+    background: #f5a623;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: auto;
+    transition: background .2s;
+  }
+  .btn-buy:hover { background: #d88e13; }
+
+  /* ===== LOCALIZAÇÃO + HORA ===== */
+  .localizacao-section {
+    background: #fff;
+    padding: 50px 30px;
+  }
+  .loc-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+  }
+  .loc-info {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 5px solid #f5a623;
+  }
+  .loc-info h2 { margin-bottom: 20px; color: #1a1a1a; font-size: 22px; }
+  .loc-info p { margin-bottom: 12px; font-size: 15px; line-height: 1.6; }
+  .loc-info .label { font-weight: bold; color: #555; }
+  .clock-box {
+    background: #1a1a1a;
+    color: #f5a623;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .clock-box .clock-icon { font-size: 24px; }
+  #hora-atual { color: #fff; }
+  #data-atual { color: #fff; font-size: 13px; font-weight: normal; margin-left: auto; }
+
+  .map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-height: 400px;
+  }
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    min-height: 400px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #1a1a1a;
+    color: #ccc;
+    padding: 50px 30px 20px;
+  }
+  .footer-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+  }
+  .footer-col h3 {
+    color: #f5a623;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  .footer-col p, .footer-col li {
+    font-size: 13px;
+    line-height: 1.8;
+    list-style: none;
+  }
+  .footer-col a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-col a:hover { color: #f5a623; }
+  .footer-bottom {
+    max-width: 1300px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.8;
+  }
+  .footer-bottom strong { color: #f5a623; }
+
+  @media (max-width: 768px) {
+    .loc-container { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 15px; }
+    .header-content { justify-content: center; }
+    .search-bar { order: 3; width: 100%; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="info">
+    <span>📞 Atendimento: (11) 2901-0601</span>
+    <span>🚚 Entrega para todo o Brasil</span>
+  </div>
+  <div>
+    <a href="#politicas">Políticas de Privacidade</a> |
+    <a href="#sobre">Sobre</a> |
+    <a href="#termos">Termo de Uso</a>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-content">
+    <div class="logo">Espelho<span>Barato</span></div>
+    <div class="search-bar">
+      <input type="text" placeholder="O que você está procurando?">
+      <button>Buscar</button>
+    </div>
+    <div class="header-icons">
+      <div class="icon"><span>👤</span><span>Minha Conta</span></div>
+      <div class="icon"><span>🛒</span><span>Carrinho (0)</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-content">
+    <a href="#banheiro">Espelho para Banheiro</a>
+    <a href="#sala">Espelho para Sala</a>
+    <a href="#quarto">Espelho para Quarto</a>
+    <a href="#closet">Espelho para Closet</a>
+    <a href="#redondo">Espelho Redondo</a>
+    <a href="#retangular">Espelho Retangular</a>
+    <a href="#led">Espelho LED</a>
+    <a href="#organico">Espelho Orgânico</a>
+    <a href="#outlet">Outlet</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Espelhos com até <span>40% OFF</span></h1>
+  <p>Espelhos Orgânicos, LED, Banheiro e muito mais — em até 6x sem juros</p>
+  <a href="#ofertas" class="btn">Ver Ofertas</a>
+</section>
+
+<!-- ===== BENEFÍCIOS ===== -->
+<div class="benefits">
+  <div class="benefit-card">
+    <div class="emoji">💳</div>
+    <h3>Até 6X sem Juros</h3>
+    <p>ou 5% OFF no PIX</p>
+  </div>
+  <div class="benefit-card">
+    <div class="emoji">🔒</div>
+    <h3>Compra Segura</h3>
+    <p>Ambiente protegido</p>
+  </div>
+  <div class="benefit-card">
+    <div class="emoji">🚚</div>
+    <h3>Entrega Expressa</h3>
+    <p>Para todo o Brasil</p>
+  </div>
+  <div class="benefit-card">
+    <div class="emoji">↩️</div>
+    <h3>Troca Fácil</h3>
+    <p>30 dias para trocar</p>
+  </div>
+</div>
+
+<!-- ===== CATEGORIAS ===== -->
+<section id="categorias">
+  <h2 class="section-title">Espelho por Ambiente</h2>
+  <div class="categories">
+    <a href="#banheiro" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400" alt="Espelho para Banheiro">
+      <h3>Espelho para Banheiro</h3>
+    </a>
+    <a href="#sala" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" alt="Espelho para Sala">
+      <h3>Espelho para Sala</h3>
+    </a>
+    <a href="#quarto" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400" alt="Espelho para Quarto">
+      <h3>Espelho para Quarto</h3>
+    </a>
+    <a href="#closet" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=400" alt="Espelho para Closet">
+      <h3>Espelho para Closet</h3>
+    </a>
+    <a href="#redondo" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" alt="Espelho Redondo">
+      <h3>Espelho Redondo</h3>
+    </a>
+    <a href="#retangular" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=400" alt="Espelho Retangular">
+      <h3>Espelho Retangular</h3>
+    </a>
+  </div>
+</section>
+
+<!-- ===== OFERTAS ===== -->
+<section id="ofertas" style="background:#fff;">
+  <h2 class="section-title">🔥 Ofertas Especiais 🔥</h2>
+  <div class="products">
+
+    <div class="product-card">
+      <span class="badge">20% OFF</span>
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500" alt="Espelho Orgânico Elegance Luxo">
+      <div class="product-info">
+        <h3>Espelho Orgânico Grande com Led Elegance Luxo 140x60cm</h3>
+        <div class="old-price">R$ 562,50</div>
+        <div class="price">R$ 450,00</div>
+        <div class="pix-price">R$ 427,50 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 75,00 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">20% OFF</span>
+      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500" alt="Espelho Grande com Led">
+      <div class="product-info">
+        <h3>Espelho Grande com Led e Desbaste 140x60cm</h3>
+        <div class="old-price">R$ 676,00</div>
+        <div class="price">R$ 540,80</div>
+        <div class="pix-price">R$ 513,76 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 90,13 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">25% OFF</span>
+      <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=500" alt="Espelho Orgânico Amazonita">
+      <div class="product-info">
+        <h3>Espelho Orgânico Amazonita 80x60cm</h3>
+        <div class="old-price">R$ 252,90</div>
+        <div class="price">R$ 189,60</div>
+        <div class="pix-price">R$ 180,12 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 31,60 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">25% OFF</span>
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500" alt="Espelho Orgânico Jade">
+      <div class="product-info">
+        <h3>Espelho Orgânico Jade 80x60cm</h3>
+        <div class="old-price">R$ 252,93</div>
+        <div class="price">R$ 189,70</div>
+        <div class="pix-price">R$ 180,22 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 31,62 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== MAIS VENDIDOS ===== -->
+<section id="mais-vendidos">
+  <h2 class="section-title">⭐ Mais Vendidos</h2>
+  <div class="products">
+
+    <div class="product-card">
+      <span class="badge">11% OFF</span>
+      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500" alt="Espelho Closet">
+      <div class="product-info">
+        <h3>Espelho Grande Corpo Inteiro Closet 140x40cm Bisotado</h3>
+        <div class="old-price">R$ 222,14</div>
+        <div class="price">R$ 197,90</div>
+        <div class="pix-price">R$ 188,01 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 32,98 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">25% OFF</span>
+      <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=500" alt="Espelho Redondo">
+      <div class="product-info">
+        <h3>Espelho Redondo Grande Decorativo com 80cm</h3>
+        <div class="old-price">R$ 261,20</div>
+        <div class="price">R$ 195,90</div>
+        <div class="pix-price">R$ 186,11 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 32,65 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">15% OFF</span>
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" alt="Espelho Banheiro">
+      <div class="product-info">
+        <h3>Espelho Redondo para Banheiro com 60cm</h3>
+        <div class="old-price">R$ 115,18</div>
+        <div class="price">R$ 97,90</div>
+        <div class="pix-price">R$ 93,01 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 16,32 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">15% OFF</span>
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500" alt="Espelho LED Opala">
+      <div class="product-info">
+        <h3>Espelho Orgânico com Led Opala 80x60cm</h3>
+        <div class="old-price">R$ 351,76</div>
+        <div class="price">R$ 299,00</div>
+        <div class="pix-price">R$ 284,05 à vista no PIX</div>
+        <div class="installments">ou 6x de R$ 49,83 sem juros</div>
+        <button class="btn-buy">Comprar</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== LOCALIZAÇÃO + HORA ===== -->
+<section class="localizacao-section" id="localizacao">
+  <div class="loc-container">
+    <div class="loc-info">
+      <h2>📍 Nossa Localização</h2>
+      <p><span class="label">Endereço:</span> Rua Dos Camares, 264</p>
+      <p><span class="label">Bairro:</span> Carandiru</p>
+      <p><span class="label">Cidade:</span> São Paulo - SP</p>
+      <p><span class="label">CEP:</span> 02068-030</p>
+      <p><span class="label">E-mail:</span> silvagaga6@gmail.com</p>
+      <p><span class="label">Telefone:</span> (11) 2901-0601</p>
+
+      <div class="clock-box">
+        <span class="clock-icon">🕒</span>
+        <span id="hora-atual">--:--:--</span>
+        <span id="data-atual">--/--/----</span>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps?q=Rua+Dos+Camares+264+Carandiru+São+Paulo+SP+02068-030&output=embed"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-content">
+
+    <div class="footer-col">
+      <h3>EspelhoBarato</h3>
+      <p>Espelhos orgânicos, LED, decorativos e para todos os ambientes. Qualidade e preço baixo para todo o Brasil.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Institucional</h3>
+      <ul>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#politicas">Políticas de Privacidade</a></li>
+        <li><a href="#termos">Termo de Uso</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Atendimento</h3>
+      <ul>
+        <li>📞 (11) 2901-0601</li>
+        <li>✉️ silvagaga6@gmail.com</li>
+        <li>🕒 Seg a Sex - 8h às 18h</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Dados da Empresa</h3>
+      <p><strong>Razão Social:</strong> Fabrica de Espelho Comercio LTDA</p>
+      <p><strong>CNPJ:</strong> 50.037.275/0001-78</p>
+      <p><strong>Insc. Estadual SP:</strong> 138.844.768.110</p>
+      <p><strong>Abertura:</strong> 22/03/2023</p>
+      <p><strong>Porte:</strong> Micro Empresa</p>
+      <p><strong>Natureza Jurídica:</strong> Sociedade Empresária Limitada</p>
+      <p><strong>Simples Nacional:</strong> Sim (desde 22/03/2023)</p>
+      <p><strong>Capital Social:</strong> R$ 20.000,00</p>
+      <p><strong>Situação:</strong> Ativa</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p><strong>Fabrica de Espelho Comercio LTDA</strong> — CNPJ: 50.037.275/0001-78</p>
+    <p>Rua Dos Camares, 264 - Carandiru - São Paulo/SP - CEP 02068-030</p>
+    <p>Inscrição Estadual SP: 138.844.768.110 | E-mail: silvagaga6@gmail.com</p>
+    <p style="margin-top:10px;">&copy; 2026 EspelhoBarato - Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===== SCRIPT: HORA E DATA EM TEMPO REAL ===== -->
+<script>
+  function atualizarRelogio() {
+    const agora = new Date();
+    const hora = agora.toLocaleTimeString('pt-BR', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+    const data = agora.toLocaleDateString('pt-BR', {
+      weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
+    });
+    document.getElementById('hora-atual').textContent = hora;
+    document.getElementById('data-atual').textContent = data;
+  }
+  atualizarRelogio();
+  setInterval(atualizarRelogio, 1000);
+</script>
+
+</body>
+</html>

@@ -1,4 +1,0 @@
-Adicione aqui as fotografias reais e autorizadas da empresa.
-Para substituir a imagem do topo, mantenha o nome hero-placeholder.svg ou altere o CSS em assets/css/style.css.
-As áreas de imagem da página inicial são placeholders e devem ser substituídas por fotos verdadeiras antes de anunciar.
-Não utilize fotos, logotipos ou marcas de terceiros sem os direitos ou permissões necessários.
